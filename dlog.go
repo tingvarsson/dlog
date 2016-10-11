@@ -23,6 +23,18 @@ func (d *DebugLogger) Debug(args ...interface{}) {
 	}
 }
 
+func (d *DebugLogger) Debugln(args ...interface{}) {
+	if d.debugEnabled {
+		d.Println("[DEBUG]", args)
+	}
+}
+
+func (d *DebugLogger) Debugf(format string, args ...interface{}) {
+	if d.debugEnabled {
+		d.Printf("[DEBUG]"+format, args)
+	}
+}
+
 func (d *DebugLogger) Enter(fn string) {
 	d.Debug("ENTER:", fn)
 }
