@@ -5,8 +5,6 @@ import (
 	"log"
 )
 
-var debug bool = false
-
 type DebugLogger struct {
 	*log.Logger
 	debugEnabled bool
@@ -27,20 +25,4 @@ func (d *DebugLogger) Debug(args ...interface{}) {
 
 func (d *DebugLogger) Enter(fn string) {
 	d.Debug("ENTER:", fn)
-}
-
-// TODO: Integrate debug control into the logger instead of having to have ugly if statements directly in the code
-// TODO: Extend the logger even further to also have ready generic functionality to log function ENTRY/EXIT
-func SetDebug(flag bool) {
-	debug = flag
-}
-
-func Debug(args ...interface{}) {
-	if debug {
-		log.Println("[DEBUG]", args)
-	}
-}
-
-func Enter(fn string) {
-	Debug("ENTER:", fn)
 }
